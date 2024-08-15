@@ -1,9 +1,17 @@
-<h1>My Movie Lists</h1>
+<div class="container">
+  <div class="header">
+    <h1>My To-Watch Lists</h1>
+  </div>
 
-<ul>
-<% @lists.each do |list| %>
-  <li> <%= link_to list.name, list%> </li>
-<% end %>
-</ul>
+  <ul>
+  <% @lists.each do |list| %>
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to list.name, list%></h5>
+  </div>
+</div>
+  <% end %>
+  </ul>
 
-<%= link_to 'Create New List', new_list_path %>
+  <%= link_to 'Create New List', new_list_path %>
+</div>
