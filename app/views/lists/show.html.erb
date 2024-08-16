@@ -1,13 +1,26 @@
+<div>
+  <button class="btn-ghost">
 <%= link_to '<- back to Lists', lists_path %>
+  </button>
+</div>
 <h1> <%= @list.name %> </h1>
 
-<ul>
+<div class="card-container">
   <% @bookmarks.each do |bookmark| %>
-    <li>
-      <%= bookmark.comment %> | <%= bookmark.movie.title %>
-      <%= link_to "Delete",  list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    </li>
+    <div class="card" style="width: 18rem;">
+      <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= bookmark.movie.title %></h5>
+        <p class="card-text"><em>"<%= bookmark.movie.overview %>"</em></p>
+        <p class="card-text"><strong>My comment:</strong> <%= bookmark.comment %></p>
+        <%= link_to "Delete",  list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<%= link_to "Create New Bookmark", new_list_bookmark_path(@list) %>
+<div>
+  <button class="btn-ghost">
+    <%= link_to "Create New Bookmark", new_list_bookmark_path(@list) %>
+  </button>
+</div>

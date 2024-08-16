@@ -1,0 +1,11 @@
+.card-container {
+  margin: 40px;
+  padding: 20px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .card {
+    margin: 20px;
+  }
+}
