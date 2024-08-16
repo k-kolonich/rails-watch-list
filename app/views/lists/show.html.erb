@@ -1,9 +1,18 @@
 <div>
   <button class="btn-ghost">
-<%= link_to '<- back to Lists', lists_path %>
+ <i class="fa-solid fa-arrow-left"></i> <%= link_to 'back to Lists', lists_path %>
   </button>
 </div>
-<h1> <%= @list.name %> </h1>
+
+<div class="banner">
+  <h1> <%= @list.name %> </h1>
+</div>
+
+<div>
+  <button class="btn-ghost">
+    <i class="fa-solid fa-plus"></i> <%= link_to "New Bookmark", new_list_bookmark_path(@list) %>
+  </button>
+</div>
 
 <div class="card-container">
   <% @bookmarks.each do |bookmark| %>
@@ -12,15 +21,9 @@
       <div class="card-body">
         <h5 class="card-title"><%= bookmark.movie.title %></h5>
         <p class="card-text"><em>"<%= bookmark.movie.overview %>"</em></p>
-        <p class="card-text"><strong>My comment:</strong> <%= bookmark.comment %></p>
-        <%= link_to "Delete",  list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <p class="card-text"><i class="fa-regular fa-comment"></i>: "<%= bookmark.comment %>"</p>
+        <i class="fa-solid fa-trash"></i> <%= link_to "Delete",  list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       </div>
     </div>
   <% end %>
-</div>
-
-<div>
-  <button class="btn-ghost">
-    <%= link_to "Create New Bookmark", new_list_bookmark_path(@list) %>
-  </button>
 </div>
